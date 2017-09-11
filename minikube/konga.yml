@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: konga
+  labels:
+    name: konga
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: konga
+    spec:
+      containers:
+      - name: konga
+        image: docker.io/pantsel/konga:next
+        ports:
+        - containerPort: 1337
+        env:
+          - name: DB_ADAPTER
+            value: 'mongo'
+          - name: DB_HOST
+            value: 'mongo'
+          - name: DB_DATABASE
+            value: 'konga'
+          - name: NODE_ENV
+            value: 'development'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: konga
+  labels:
+    name: konga
+spec:
+  type: NodePort
+  ports:
+    - port: 1337
+  selector:
+    name: konga
