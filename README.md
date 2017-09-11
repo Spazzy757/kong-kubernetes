@@ -1,6 +1,9 @@
 # kong-kubernetes
 This is configuration for kong on minikube with konga ui
 
+## Install Minikube
+https://kubernetes.io/docs/tasks/tools/install-minikube/
+
 ## Deploy Kong
 >To deploy kong on a minikube instance use the following commadn within the minikube directory
 
@@ -62,3 +65,7 @@ Events:			<none>
 ```
 http://<minikube ip>:<konga PORT>
 ```
+
+## Road Map
+* fix bugs with setup
+* create setup for production kubernetes
